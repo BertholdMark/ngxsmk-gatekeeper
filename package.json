@@ -10,7 +10,11 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "cli:build": "cd tools/cli && npm run build",
-    "cli:watch": "cd tools/cli && npm run watch"
+    "cli:watch": "cd tools/cli && npm run watch",
+    "prepublishOnly": "npm run build",
+    "publish:lib": "npm run build && cd dist/ngxsmk-gatekeeper && npm publish",
+    "publish:lib:dry-run": "npm run build && cd dist/ngxsmk-gatekeeper && npm publish --dry-run",
+    "pack:lib": "npm run build && cd dist/ngxsmk-gatekeeper && npm pack"
   },
   "prettier": {
     "printWidth": 100,
@@ -52,6 +56,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^20.3.0",
     "typescript": "~5.9.2",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "zone.js": "~0.15.0"
   }
 }

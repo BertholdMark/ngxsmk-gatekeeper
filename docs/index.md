@@ -14,7 +14,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/your-username/ngxsmk-gatekeeper
+      link: https://github.com/NGXSMK/ngxsmk-gatekeeper
 
 features:
   - icon: 🎯

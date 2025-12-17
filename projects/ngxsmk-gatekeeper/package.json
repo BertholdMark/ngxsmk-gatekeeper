@@ -18,12 +18,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/ngxsmk-gatekeeper.git"
+    "url": "https://github.com/NGXSMK/ngxsmk-gatekeeper.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/ngxsmk-gatekeeper/issues"
+    "url": "https://github.com/NGXSMK/ngxsmk-gatekeeper/issues"
   },
-  "homepage": "https://github.com/your-username/ngxsmk-gatekeeper#readme",
+  "homepage": "https://github.com/NGXSMK/ngxsmk-gatekeeper#readme",
   "main": "./fesm2022/ngxsmk-gatekeeper.mjs",
   "module": "./fesm2022/ngxsmk-gatekeeper.mjs",
   "types": "./index.d.ts",

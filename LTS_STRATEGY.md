@@ -319,7 +319,7 @@ MAJOR.MINOR.PATCH[-prerelease][+build]
 
 For questions about versioning, deprecations, or upgrades:
 
-- **GitHub Issues**: [Create an issue](https://github.com/your-username/ngxsmk-gatekeeper/issues)
+- **GitHub Issues**: [Create an issue](https://github.com/NGXSMK/ngxsmk-gatekeeper/issues)
 - **Documentation**: See [README.md](./README.md) for usage
 - **Migration Guides**: Check version-specific migration guides
 

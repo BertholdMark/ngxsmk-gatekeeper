@@ -557,8 +557,8 @@ If this library helps you build better Angular applications:
 
 - 📦 [npm Package](https://www.npmjs.com/package/ngxsmk-gatekeeper)
 - 📚 [Documentation](https://your-docs-url)
-- 🐛 [Issue Tracker](https://github.com/your-username/ngxsmk-gatekeeper/issues)
-- 💬 [Discussions](https://github.com/your-username/ngxsmk-gatekeeper/discussions)
+- 🐛 [Issue Tracker](https://github.com/NGXSMK/ngxsmk-gatekeeper/issues)
+- 💬 [Discussions](https://github.com/NGXSMK/ngxsmk-gatekeeper/discussions)
 - 🔒 [Security Policy](./SECURITY.md)
 
 ## 🙏 Acknowledgments

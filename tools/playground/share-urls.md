@@ -6,12 +6,12 @@ This file contains shareable URLs for all playground examples. These URLs can be
 
 ### StackBlitz
 ```
-https://stackblitz.com/github/your-username/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth
+https://stackblitz.com/github/NGXSMK/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth
 ```
 
 **Embed Code:**
 ```markdown
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/your-username/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/NGXSMK/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth)
 ```
 
 ### CodeSandbox
@@ -29,7 +29,7 @@ https://codesandbox.io/s/ngxsmk-gatekeeper-minimal-auth
 ### StackBlitz
 ```html
 <iframe
-  src="https://stackblitz.com/github/your-username/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth?embed=1&file=src/main.ts"
+  src="https://stackblitz.com/github/NGXSMK/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth?embed=1&file=src/main.ts"
   width="100%"
   height="600px"
   frameborder="0"

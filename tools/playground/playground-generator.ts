@@ -20,7 +20,7 @@ export interface PlaygroundURLs {
  */
 export function generateStackBlitzURL(config: PlaygroundConfig): string {
   const baseURL = 'https://stackblitz.com/github';
-  const repo = 'your-username/ngxsmk-gatekeeper';
+  const repo = 'NGXSMK/ngxsmk-gatekeeper';
   const examplePath = `tools/playground/stackblitz/examples/${config.example}`;
   
   // StackBlitz supports embedding via GitHub paths

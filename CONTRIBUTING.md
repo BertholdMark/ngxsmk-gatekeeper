@@ -65,7 +65,7 @@ Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.md) wh
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/your-username/ngxsmk-gatekeeper.git
+   git clone https://github.com/NGXSMK/ngxsmk-gatekeeper.git
    cd ngxsmk-gatekeeper
    ```
 

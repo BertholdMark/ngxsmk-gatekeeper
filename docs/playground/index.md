@@ -8,7 +8,7 @@ Choose a playground platform and example to get started:
 
 ### StackBlitz
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/your-username/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/NGXSMK/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth)
 
 ### CodeSandbox
 
@@ -19,7 +19,7 @@ Choose a playground platform and example to get started:
 ### Minimal Authentication
 
 **Try it now:**
-- [StackBlitz](https://stackblitz.com/github/your-username/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth)
+- [StackBlitz](https://stackblitz.com/github/NGXSMK/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth)
 - [CodeSandbox](https://codesandbox.io/s/ngxsmk-gatekeeper-minimal-auth)
 
 **What you'll learn:**
@@ -93,5 +93,5 @@ Want to create your own playground example?
 
 ## Feedback
 
-Found a bug or have a suggestion? [Open an issue](https://github.com/your-username/ngxsmk-gatekeeper/issues) or [start a discussion](https://github.com/your-username/ngxsmk-gatekeeper/discussions).
+Found a bug or have a suggestion? [Open an issue](https://github.com/NGXSMK/ngxsmk-gatekeeper/issues) or [start a discussion](https://github.com/NGXSMK/ngxsmk-gatekeeper/discussions).
 

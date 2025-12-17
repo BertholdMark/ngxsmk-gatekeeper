@@ -43,7 +43,7 @@ Interactive playground examples for ngxsmk-gatekeeper that can be run in StackBl
 **Quick Start:**
 ```bash
 # Open in StackBlitz
-https://stackblitz.com/github/your-username/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth
+https://stackblitz.com/github/NGXSMK/ngxsmk-gatekeeper/tree/main/tools/playground/stackblitz/examples/minimal-auth
 ```
 
 ### CodeSandbox
