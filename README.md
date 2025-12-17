@@ -346,7 +346,7 @@ provideHttpClient(
 
 ## 📚 Complete Documentation
 
-- **[📖 Full Documentation](https://your-docs-url)** - Complete guide with examples
+- **[📖 Full Documentation](https://github.com/NGXSMK/ngxsmk-gatekeeper#readme)** - Complete guide with examples
 - **[🎮 Interactive Playground](./docs/playground/)** - Try it in your browser
 - **[📋 Template Library](./docs/templates/)** - Pre-built configurations
 - **[🛠️ Angular Schematics](./schematics/README.md)** - Code generators
@@ -556,7 +556,7 @@ If this library helps you build better Angular applications:
 ## 🔗 Links
 
 - 📦 [npm Package](https://www.npmjs.com/package/ngxsmk-gatekeeper)
-- 📚 [Documentation](https://your-docs-url)
+- 📚 [Documentation](https://github.com/NGXSMK/ngxsmk-gatekeeper#readme)
 - 🐛 [Issue Tracker](https://github.com/NGXSMK/ngxsmk-gatekeeper/issues)
 - 💬 [Discussions](https://github.com/NGXSMK/ngxsmk-gatekeeper/discussions)
 - 🔒 [Security Policy](./SECURITY.md)
