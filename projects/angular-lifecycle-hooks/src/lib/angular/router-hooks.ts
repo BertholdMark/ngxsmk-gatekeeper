@@ -5,7 +5,7 @@
 import { inject } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { RouteLifecycleHooks } from '../core';
+import { RouteLifecycleHooks, ScopedRouteLifecycleHooks } from '../core';
 import { buildRouteContext } from './hook-context';
 import { runBeforeRouteHook, runAfterRouteHook, runRouteBlockedHook } from '../core/hook-runner';
 
@@ -13,10 +13,10 @@ import { runBeforeRouteHook, runAfterRouteHook, runRouteBlockedHook } from '../c
  * Sets up router lifecycle hooks
  * This should be called during application bootstrap via APP_INITIALIZER
  * 
- * @param hooks - Route lifecycle hooks configuration
+ * @param hooks - Route lifecycle hooks configuration (supports both unscoped and scoped hooks)
  * @returns Factory function for APP_INITIALIZER
  */
-export function setupRouterHooks(hooks: RouteLifecycleHooks | undefined) {
+export function setupRouterHooks(hooks: RouteLifecycleHooks | ScopedRouteLifecycleHooks | undefined) {
   if (!hooks) {
     return () => {}; // No hooks = disabled
   }

@@ -71,13 +71,13 @@ function getRateLimitKey(
   }
 
   // Default: use URL from context
-  if (context.url && typeof context.url === 'string') {
-    return context.url;
+  if (context['url'] && typeof context['url'] === 'string') {
+    return context['url'];
   }
-
+  
   // Fallback: use route path
-  if (context.route) {
-    const route = context.route as { path?: string; routeConfig?: { path?: string } };
+  if (context['route']) {
+    const route = context['route'] as { path?: string; routeConfig?: { path?: string } };
     return route.path || route.routeConfig?.path || 'unknown';
   }
 
@@ -187,12 +187,12 @@ export function createRateLimitMiddleware(
     windowMs = 60000, // 1 minute default
     keyGenerator,
     redirect,
-    message = 'Rate limit exceeded',
+    message: _message = 'Rate limit exceeded',
   } = options;
 
   return createMiddleware('rate-limit', (context: MiddlewareContext) => {
     const key = getRateLimitKey(context, keyGenerator);
-    const { allowed, remaining } = checkRateLimit(key, maxRequests, windowMs);
+    const { allowed } = checkRateLimit(key, maxRequests, windowMs);
 
     if (!allowed) {
       // Rate limit exceeded

@@ -4,6 +4,9 @@ import {
   MiddlewareContext,
   MiddlewareResult,
   MiddlewareResponse,
+  MiddlewarePriority,
+  PrioritizedMiddleware,
+  getPriorityValue,
 } from './middleware.types';
 import {
   DebugOptions,
@@ -50,6 +53,31 @@ export interface MiddlewareChainResult extends MiddlewareResult {
   decisionRationale?: import('../compliance/compliance.types').ComplianceDecisionRationale;
 }
 
+/**
+ * Sorts middleware by priority (high priority first)
+ * Maintains stable sort for same priority (preserves original order)
+ */
+function sortMiddlewareByPriority(middlewares: NgxMiddleware[]): NgxMiddleware[] {
+  // Create array with original index for stable sort
+  const withIndex = middlewares.map((mw, index) => ({
+    middleware: mw,
+    originalIndex: index,
+    priority: (mw as PrioritizedMiddleware).priority ?? MiddlewarePriority.Normal,
+  }));
+
+  // Sort by priority (descending), then by original index (ascending) for stability
+  withIndex.sort((a, b) => {
+    const priorityDiff = getPriorityValue(b.priority) - getPriorityValue(a.priority);
+    if (priorityDiff !== 0) {
+      return priorityDiff;
+    }
+    // Same priority - maintain original order (stable sort)
+    return a.originalIndex - b.originalIndex;
+  });
+
+  return withIndex.map(item => item.middleware);
+}
+
 export async function runMiddlewareChain(
   middlewares: NgxMiddleware[],
   context: MiddlewareContext,
@@ -57,6 +85,10 @@ export async function runMiddlewareChain(
   benchmarkConfig?: BenchmarkConfig,
   complianceConfig?: ComplianceConfig
 ): Promise<MiddlewareChainResult> {
+  // Sort middleware by priority (high priority first)
+  // This ensures deterministic execution order
+  const sortedMiddlewares = sortMiddlewareByPriority(middlewares);
+
   // Initialize benchmark if enabled
   if (benchmarkConfig?.enabled) {
     initializeBenchmarkIfEnabled(benchmarkConfig);
@@ -92,7 +124,7 @@ export async function runMiddlewareChain(
     logChainStart(debugOptions);
   }
 
-  if (!middlewares || middlewares.length === 0) {
+  if (!sortedMiddlewares || sortedMiddlewares.length === 0) {
     const result: MiddlewareChainResult = { result: true, stoppedAt: -1 };
     if (debugOptions?.enabled) {
       const totalTime = getTime() - chainStartTime;
@@ -106,8 +138,8 @@ export async function runMiddlewareChain(
     return result;
   }
 
-  for (let i = 0; i < middlewares.length; i++) {
-    const middleware = middlewares[i];
+  for (let i = 0; i < sortedMiddlewares.length; i++) {
+    const middleware = sortedMiddlewares[i];
     if (!middleware) {
       continue; // Skip undefined entries
     }

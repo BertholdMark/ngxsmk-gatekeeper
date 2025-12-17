@@ -1,0 +1,23 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add ngxsmk-gatekeeper to your Angular project",
+      "factory": "./ng-add/index",
+      "schema": "./ng-add/schema.json"
+    },
+    "middleware": {
+      "description": "Generate a new middleware function",
+      "factory": "./middleware/index",
+      "schema": "./middleware/schema.json",
+      "aliases": ["mw"]
+    },
+    "pipeline": {
+      "description": "Generate a new middleware pipeline",
+      "factory": "./pipeline/index",
+      "schema": "./pipeline/schema.json",
+      "aliases": ["pipe"]
+    }
+  }
+}
+

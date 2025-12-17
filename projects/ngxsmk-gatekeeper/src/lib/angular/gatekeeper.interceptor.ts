@@ -48,6 +48,7 @@ function buildContext(
     headers: request.headers,
     body: request.body,
     params: request.params,
+    shared: {}, // Initialize shared execution state for middleware chain
   };
 
   // Add feature flag provider to context if available

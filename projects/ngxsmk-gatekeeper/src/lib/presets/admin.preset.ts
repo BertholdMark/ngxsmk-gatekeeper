@@ -74,7 +74,7 @@ export function adminPreset(
           if (typeof result === 'object' && result !== null && 'allow' in result && !result.allow) {
             return { allow: false, redirect: (result as MiddlewareResponse).redirect || redirect } as MiddlewareResponse;
           }
-          return result;
+          return result as boolean | MiddlewareResponse;
         }),
         createMiddleware('rolePreset', async (context: MiddlewareContext) => {
           const result = await roleMiddleware(context);
@@ -84,7 +84,7 @@ export function adminPreset(
           if (typeof result === 'object' && result !== null && 'allow' in result && !result.allow) {
             return { allow: false, redirect: (result as MiddlewareResponse).redirect || redirect } as MiddlewareResponse;
           }
-          return result;
+          return result as boolean | MiddlewareResponse;
         }),
       ]
     : [authMiddleware, roleMiddleware];

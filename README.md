@@ -70,6 +70,8 @@ const routes: Routes = [
 
 ## 🎨 Key Features
 
+### Core Features
+
 | Feature | Description | Status |
 |---------|-------------|--------|
 | **Route Protection** | Protect routes with functional guards | ✅ Production Ready |
@@ -81,6 +83,69 @@ const routes: Routes = [
 | **Authentication Adapters** | Auth0, Firebase, JWT support | ✅ Included |
 | **Compliance Mode** | SOC2, ISO 27001 ready | ✅ Included |
 | **Plugin Architecture** | Extensible and customizable | ✅ Included |
+
+### Developer Tools
+
+| Feature | Description | Status |
+|---------|-------------|--------|
+| **Angular Schematics** | Code generators for middleware and pipelines | ✅ Available |
+| **Interactive Playground** | Try it live in StackBlitz/CodeSandbox | ✅ Available |
+| **Standalone CLI Tool** | Init, analyze, test, and export commands | ✅ Available |
+| **Testing Utilities** | Mock contexts, assertions, and test helpers | ✅ Available |
+| **Configuration Validator** | Type checking, performance, and security analysis | ✅ Available |
+| **Visual Middleware Builder** | Drag-and-drop interface for building middleware | ✅ Available |
+| **Real-time Observability** | WebSocket monitoring and analytics dashboard | ✅ Available |
+| **Template Library** | Pre-built configurations for common scenarios | ✅ Available |
+| **Middleware Marketplace** | Discover and install community plugins | ✅ Available |
+| **Showcase Gallery** | Real-world implementations and case studies | ✅ Available |
+
+### Security Middleware (8 features)
+
+- ✅ **IP Whitelisting/Blacklisting** - Allow/block specific IPs or CIDR ranges
+- ✅ **CSRF Protection** - Protect against Cross-Site Request Forgery
+- ✅ **Session Management** - Automatic session timeout and renewal
+- ✅ **API Key Validation** - Protect APIs with key validation
+- ✅ **Account Lockout** - Brute force protection
+- ✅ **Webhook Signature Verification** - Verify webhook signatures
+- ✅ **Device Fingerprinting** - Track and validate devices
+- ✅ **User-Agent Validation** - Block bots and validate browsers
+
+### Access Control (3 features)
+
+- ✅ **Time-Based Access** - Restrict access by time/day
+- ✅ **Maintenance Mode** - Enable maintenance with admin access
+- ✅ **Geographic Restrictions** - Block/allow by country
+
+### Authentication (3 features)
+
+- ✅ **Multi-Factor Authentication (MFA)** - Enforce MFA
+- ✅ **OAuth2/OIDC** - OAuth2 authentication support
+- ✅ **JWT Token Refresh** - Automatic token renewal
+
+### Request Processing (4 features)
+
+- ✅ **Request Validation** - Validate body, query, params, headers
+- ✅ **Request Size Limits** - Prevent DoS attacks
+- ✅ **Request Deduplication** - Prevent duplicate requests
+- ✅ **API Versioning** - Handle API versioning
+
+### Advanced Control (4 features)
+
+- ✅ **Conditional Middleware** - If/else logic in chains
+- ✅ **Circuit Breaker** - Resilience pattern
+- ✅ **Retry Logic** - Retry with backoff strategies
+- ✅ **Concurrent Limits** - Limit concurrent requests
+
+### Analytics & Monitoring (3 features)
+
+- ✅ **Request Analytics** - Track metrics and events
+- ✅ **A/B Testing** - Implement A/B tests
+- ✅ **Request Logging** - Comprehensive request logging
+
+### Performance (2 features)
+
+- ✅ **Cache Middleware** - Cache middleware results
+- ✅ **Request Batching** - Batch requests together
 
 ## 📖 Real-World Examples
 
@@ -97,6 +162,22 @@ provideGatekeeper({
   middlewares: [authMiddleware],
   onFail: '/login',
 });
+```
+
+### 📋 Using Templates
+
+```typescript
+import { createTemplateLoader } from 'ngxsmk-gatekeeper/lib/templates';
+
+const loader = createTemplateLoader();
+
+// Create configuration from template
+const config = await loader.createConfig('saas', {
+  roles: ['user', 'admin'],
+  enableRateLimit: true,
+});
+
+provideGatekeeper(config);
 ```
 
 ### 👥 Role-Based Access Control
@@ -131,6 +212,60 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 provideHttpClient(
   withInterceptors([gatekeeperInterceptor])
 );
+```
+
+### 🔒 Security Features
+
+```typescript
+import { 
+  createIPWhitelistMiddleware,
+  createCSRFMiddleware,
+  createSessionMiddleware,
+  createAPIKeyMiddleware
+} from 'ngxsmk-gatekeeper/lib/middlewares';
+
+const securityPipeline = definePipeline('security', [
+  createIPWhitelistMiddleware({ allowedIPs: ['10.0.0.0/8'] }),
+  createCSRFMiddleware({ tokenHeader: 'X-CSRF-Token' }),
+  createSessionMiddleware({ timeout: 3600 }),
+  createAPIKeyMiddleware({ validateKey: async (key) => await checkKey(key) })
+]);
+```
+
+### ⏰ Access Control
+
+```typescript
+import { 
+  createTimeWindowMiddleware,
+  createMaintenanceModeMiddleware,
+  createGeoBlockMiddleware,
+  DayOfWeek
+} from 'ngxsmk-gatekeeper/lib/middlewares';
+
+const accessControl = definePipeline('access', [
+  createTimeWindowMiddleware({
+    allowedHours: { start: 9, end: 17 },
+    allowedDays: [DayOfWeek.Monday, DayOfWeek.Friday]
+  }),
+  createMaintenanceModeMiddleware({ enabled: false }),
+  createGeoBlockMiddleware({ allowedCountries: ['US', 'CA'] })
+]);
+```
+
+### 📊 Monitoring & Analytics
+
+```typescript
+import { 
+  createAnalyticsMiddleware,
+  createABTestMiddleware,
+  createRequestLoggingMiddleware
+} from 'ngxsmk-gatekeeper/lib/middlewares';
+
+const monitoring = definePipeline('monitoring', [
+  createAnalyticsMiddleware({ sink: analyticsSink }),
+  createABTestMiddleware({ tests: { 'feature': { variants: [...] } } }),
+  createRequestLoggingMiddleware({ logLevel: 'info' })
+]);
 ```
 
 ## 🎯 Perfect For
@@ -212,6 +347,16 @@ provideHttpClient(
 ## 📚 Complete Documentation
 
 - **[📖 Full Documentation](https://your-docs-url)** - Complete guide with examples
+- **[🎮 Interactive Playground](./docs/playground/)** - Try it in your browser
+- **[📋 Template Library](./docs/templates/)** - Pre-built configurations
+- **[🛠️ Angular Schematics](./schematics/README.md)** - Code generators
+- **[⚡ CLI Tool](./tools/cli/README.md)** - Standalone command-line interface
+- **[🧪 Testing Utilities](./docs/testing/)** - Testing helpers and mocks
+- **[✅ Configuration Validator](./docs/validation/)** - Validate your setup
+- **[🛒 Middleware Marketplace](./docs/marketplace/)** - Discover plugins
+- **[📊 Observability Dashboard](./docs/observability/)** - Real-time monitoring
+- **[🎨 Visual Builder](./docs/visual-builder/)** - Drag-and-drop middleware builder
+- **[🌟 Showcase Gallery](./docs/showcase/)** - User implementations
 - **[🚀 Quick Start Guide](./docs/guide/quick-start.md)** - Get started in 5 minutes
 - **[🎯 Middleware Pattern](./docs/guide/middleware-pattern.md)** - Learn the core concept
 - **[🔐 Route Protection](./docs/guide/route-protection.md)** - Protect your routes
@@ -266,6 +411,89 @@ const customMiddleware = createMiddleware('custom', (context) => {
 });
 ```
 
+### 🛠️ Developer Tools
+
+#### Angular Schematics
+
+Generate middleware and pipelines with Angular CLI:
+
+```bash
+ng add ngxsmk-gatekeeper
+ng generate ngxsmk-gatekeeper:middleware auth
+ng generate ngxsmk-gatekeeper:pipeline admin
+```
+
+#### CLI Tool
+
+Analyze and test your configuration:
+
+```bash
+npx @ngxsmk-gatekeeper/cli init
+npx @ngxsmk-gatekeeper/cli analyze
+npx @ngxsmk-gatekeeper/cli test
+```
+
+#### Visual Builder
+
+Build middleware chains visually with drag-and-drop:
+
+```typescript
+import { VisualBuilderService } from 'ngxsmk-gatekeeper/lib/visual-builder';
+
+const builder = new VisualBuilderService();
+// Use the visual builder UI to create middleware chains
+```
+
+#### Real-time Observability
+
+Monitor middleware execution in real-time:
+
+```typescript
+import { provideObservability } from 'ngxsmk-gatekeeper/lib/observability';
+
+provideObservability({
+  websocketUrl: 'ws://localhost:8080',
+  enableRealtime: true,
+});
+```
+
+#### Template Library
+
+Use pre-built configurations:
+
+```typescript
+import { createTemplateLoader } from 'ngxsmk-gatekeeper/lib/templates';
+
+const loader = createTemplateLoader();
+const config = await loader.createConfig('saas', {
+  roles: ['user', 'admin'],
+  enableRateLimit: true,
+});
+```
+
+#### Configuration Validator
+
+Validate your setup:
+
+```typescript
+import { ConfigValidator } from 'ngxsmk-gatekeeper/lib/validator';
+
+const validator = inject(ConfigValidator);
+const result = await validator.validate(config);
+console.log(result.issues);
+```
+
+#### Testing Utilities
+
+Test middleware easily:
+
+```typescript
+import { createMockContext, expectMiddlewareToAllow } from 'ngxsmk-gatekeeper/lib/testing';
+
+const context = createMockContext({ user: { isAuthenticated: true } });
+await expectMiddlewareToAllow(authMiddleware(context));
+```
+
 ## 🎓 Learn More
 
 ### 📖 Documentation
@@ -285,10 +513,12 @@ const customMiddleware = createMiddleware('custom', (context) => {
 
 - ✅ **Type-Safe** - Full TypeScript support
 - ✅ **Tree-Shakeable** - Zero bundle overhead
-- ✅ **Well-Tested** - Comprehensive test coverage
-- ✅ **Well-Documented** - Complete documentation
+- ✅ **Well-Tested** - Comprehensive test coverage with testing utilities
+- ✅ **Well-Documented** - Complete documentation with examples
 - ✅ **Security-First** - Responsible disclosure policy
 - ✅ **Long-Term Support** - Clear LTS strategy
+- ✅ **Developer Tools** - Schematics, CLI, visual builder, and more
+- ✅ **Community** - Marketplace, showcase gallery, and active development
 
 ## 📋 Requirements
 

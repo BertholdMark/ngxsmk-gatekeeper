@@ -99,12 +99,57 @@ provideGatekeeper({
 
 ## Built-in Middleware
 
-The library includes several built-in middleware:
+The library includes **30+ built-in middleware** functions organized by category:
 
+### Core Middleware
 - `createAuthMiddleware()` - Authentication check
 - `createRoleMiddleware(roles)` - Role-based access
 - `createFeatureFlagMiddleware(flag)` - Feature flag check
 - `createRateLimitMiddleware(options)` - Rate limiting
+
+### Security Middleware (8 features)
+- `createIPWhitelistMiddleware()` - Allow specific IPs
+- `createIPBlacklistMiddleware()` - Block specific IPs
+- `createCSRFMiddleware()` - CSRF protection
+- `createSessionMiddleware()` - Session management
+- `createAPIKeyMiddleware()` - API key validation
+- `createAccountLockoutMiddleware()` - Brute force protection
+- `createWebhookSignatureMiddleware()` - Webhook verification
+- `createDeviceFingerprintMiddleware()` - Device tracking
+- `createUserAgentMiddleware()` - User agent validation
+
+### Access Control (3 features)
+- `createTimeWindowMiddleware()` - Time-based access
+- `createMaintenanceModeMiddleware()` - Maintenance mode
+- `createGeoBlockMiddleware()` - Geographic restrictions
+
+### Authentication (3 features)
+- `createMFAMiddleware()` - Multi-factor authentication
+- `createOAuth2Middleware()` - OAuth2/OIDC
+- `createJWTRefreshMiddleware()` - JWT token refresh
+
+### Request Processing (4 features)
+- `createRequestValidationMiddleware()` - Request validation
+- `createRequestSizeMiddleware()` - Size limits
+- `createRequestDeduplicationMiddleware()` - Deduplication
+- `createAPIVersioningMiddleware()` - API versioning
+
+### Advanced Control (4 features)
+- `createConditionalMiddleware()` - Conditional execution
+- `createCircuitBreakerMiddleware()` - Circuit breaker pattern
+- `createRetryMiddleware()` - Retry with backoff
+- `createConcurrentLimitMiddleware()` - Concurrent limits
+
+### Analytics & Monitoring (3 features)
+- `createAnalyticsMiddleware()` - Request analytics
+- `createABTestMiddleware()` - A/B testing
+- `createRequestLoggingMiddleware()` - Request logging
+
+### Performance (2 features)
+- `createCacheMiddleware()` - Result caching
+- `createRequestBatchingMiddleware()` - Request batching
+
+See the [Middleware API](/api/middleware) for complete documentation and examples.
 
 ## Custom Middleware
 
@@ -120,6 +165,13 @@ export const customMiddleware = createMiddleware('custom', async (context) => {
 
 ## Next Steps
 
-- Route Protection - Using middleware for route protection
-- HTTP Protection - Using middleware for HTTP protection  
-- Pipelines - Grouping middleware into reusable pipelines
+- [Route Protection](/guide/route-protection) - Using middleware for route protection
+- [HTTP Protection](/guide/http-protection) - Using middleware for HTTP protection
+- [Security Guide](/guide/security) - Security features and best practices
+- [Access Control](/guide/access-control) - Time windows and geo-blocking
+- [Request Processing](/guide/request-processing) - Validation and limits
+- [Monitoring](/guide/monitoring) - Analytics and logging
+- [Advanced Control](/guide/advanced-control) - Advanced patterns
+- [Performance](/guide/performance) - Optimization features
+- [Pipelines](/guide/pipelines) - Grouping middleware into reusable pipelines
+- [Features Overview](/guide/features-overview) - Complete feature list

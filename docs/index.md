@@ -35,6 +35,24 @@ features:
   - icon: 🎨
     title: Composable
     details: Build complex protection logic from simple, reusable pieces
+  - icon: 🔒
+    title: Security Features
+    details: 30+ built-in middleware for IP filtering, CSRF, session management, and more
+  - icon: ⚡
+    title: Performance
+    details: Built-in caching, batching, and optimization middleware
+  - icon: 📊
+    title: Monitoring
+    details: Analytics, A/B testing, and request logging out of the box
+  - icon: 🛠️
+    title: Developer Tools
+    details: Schematics, CLI, visual builder, testing utilities, and more
+  - icon: 📋
+    title: Templates
+    details: Pre-built configurations for SaaS, e-commerce, API, and more
+  - icon: 🌟
+    title: Showcase
+    details: Real-world implementations and case studies from the community
 ---
 
 ## Quick Start
@@ -96,6 +114,14 @@ Angular applications often need to protect routes and HTTP requests based on aut
 - ✅ Compliance Mode (SOC2, ISO)
 - ✅ License Verification
 - ✅ Plugin Architecture
+- ✅ Angular Schematics
+- ✅ CLI Tool
+- ✅ Visual Builder
+- ✅ Testing Utilities
+- ✅ Template Library
+- ✅ Observability Dashboard
+- ✅ Middleware Marketplace
+- ✅ Showcase Gallery
 - ✅ All features included
 
 [Learn more about the plugin architecture →](/guide/plugins)

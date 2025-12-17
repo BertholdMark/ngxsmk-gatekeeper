@@ -10,3 +10,6 @@ export type { MiddlewareChainResult } from './middleware-runner';
 export type { BenchmarkConfig, MiddlewareBenchmarkStats, ChainBenchmarkStats } from './benchmark';
 export { getBenchmarkStats, clearBenchmarkStats } from './benchmark';
 
+// Export priority types
+export { MiddlewarePriority, getPriorityValue } from './middleware.types';
+

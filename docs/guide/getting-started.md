@@ -69,10 +69,59 @@ const routes: Routes = [
 
 HTTP requests are automatically protected when you configure the gatekeeper. The middleware runs for all HTTP requests.
 
+## Available Middleware
+
+ngxsmk-gatekeeper includes **30+ built-in middleware** functions:
+
+### Security (8 features)
+- IP Whitelisting/Blacklisting
+- CSRF Protection
+- Session Management
+- API Key Validation
+- Account Lockout
+- Webhook Signature Verification
+- Device Fingerprinting
+- User-Agent Validation
+
+### Access Control (3 features)
+- Time-Based Access
+- Maintenance Mode
+- Geographic Restrictions
+
+### Authentication (3 features)
+- Multi-Factor Authentication (MFA)
+- OAuth2/OIDC
+- JWT Token Refresh
+
+### Request Processing (4 features)
+- Request Validation
+- Request Size Limits
+- Request Deduplication
+- API Versioning
+
+### Advanced Control (4 features)
+- Conditional Middleware
+- Circuit Breaker
+- Retry Logic
+- Concurrent Limits
+
+### Analytics & Monitoring (3 features)
+- Request Analytics
+- A/B Testing
+- Request Logging
+
+### Performance (2 features)
+- Cache Middleware
+- Request Batching
+
+See the [Middleware API](/api/middleware) for complete documentation.
+
 ## Next Steps
 
 - [Installation Guide](/guide/installation) - Detailed installation instructions
 - [Quick Start](/guide/quick-start) - Build your first protected route
 - [Middleware Pattern](/guide/middleware-pattern) - Learn about the middleware pattern
+- [Security Guide](/guide/security) - Security features and best practices
+- [Access Control](/guide/access-control) - Time windows and geo-blocking
 - [Examples](/examples/) - See complete working examples
 

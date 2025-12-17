@@ -81,18 +81,40 @@ export default defineConfig({
           text: 'Core Concepts',
           items: [
             { text: 'Middleware Pattern', link: '/guide/middleware-pattern' },
+            { text: 'Features Overview', link: '/guide/features-overview' },
             { text: 'Route Protection', link: '/guide/route-protection' },
             { text: 'HTTP Protection', link: '/guide/http-protection' },
             { text: 'Context & State', link: '/guide/context-state' }
           ]
         },
         {
+          text: 'Security',
+          items: [
+            { text: 'Security Features', link: '/guide/security' },
+            { text: 'Access Control', link: '/guide/access-control' }
+          ]
+        },
+        {
+          text: 'Request Processing',
+          items: [
+            { text: 'Request Processing', link: '/guide/request-processing' }
+          ]
+        },
+        {
+          text: 'Monitoring',
+          items: [
+            { text: 'Monitoring & Analytics', link: '/guide/monitoring' }
+          ]
+        },
+        {
           text: 'Advanced',
           items: [
+            { text: 'Advanced Control', link: '/guide/advanced-control' },
             { text: 'Pipelines', link: '/guide/pipelines' },
             { text: 'Debug Mode', link: '/guide/debug-mode' },
             { text: 'Performance', link: '/guide/performance' },
-            { text: 'SSR Support', link: '/guide/ssr-support' }
+            { text: 'SSR Support', link: '/guide/ssr-support' },
+            { text: 'Plugins', link: '/guide/plugins' }
           ]
         }
       ],

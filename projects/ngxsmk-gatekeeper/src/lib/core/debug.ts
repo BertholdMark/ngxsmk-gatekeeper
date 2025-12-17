@@ -46,7 +46,7 @@ function isProduction(): boolean {
 /**
  * Gets middleware name for debugging
  */
-function getMiddlewareName(
+export function getMiddlewareName(
   middleware: NgxMiddleware,
   index: number
 ): string {

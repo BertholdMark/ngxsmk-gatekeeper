@@ -18,28 +18,46 @@ export const LIFECYCLE_HOOKS_CONFIG = new InjectionToken<LifecycleHooksConfig>(
 /**
  * Provides lifecycle hooks configuration and sets up router/HTTP hooks
  * 
- * @param config - Lifecycle hooks configuration
+ * @param config - Lifecycle hooks configuration (supports both unscoped and scoped hooks)
  * @returns Array of providers
  * 
  * @example
  * ```typescript
+ * import { beforeRoute, beforeRequest } from 'angular-lifecycle-hooks';
+ * 
  * bootstrapApplication(AppComponent, {
  *   providers: [
  *     provideLifecycleHooks({
  *       route: {
- *         beforeRoute: (ctx) => {
- *           console.log('Navigating to:', ctx.navigation.to);
- *           return true;
- *         },
+ *         // Scoped hooks using helper functions
+ *         beforeRoute: [
+ *           beforeRoute({ path: '/admin/**' }, (ctx) => {
+ *             console.log('Admin route:', ctx.navigation.to);
+ *             return true;
+ *           }),
+ *           beforeRoute({ path: '/api/**' }, (ctx) => {
+ *             console.log('API route:', ctx.navigation.to);
+ *             return true;
+ *           }),
+ *         ],
+ *         // Or use unscoped hook (applies to all routes)
  *         afterRoute: (ctx) => {
  *           console.log('Navigated to:', ctx.navigation.to);
  *         },
  *       },
  *       http: {
- *         beforeRequest: (ctx) => {
- *           console.log('Request:', ctx.request?.url);
- *           return true;
- *         },
+ *         // Scoped hooks
+ *         beforeRequest: [
+ *           beforeRequest({ method: 'POST' }, (ctx) => {
+ *             console.log('POST request:', ctx.request?.url);
+ *             return true;
+ *           }),
+ *           beforeRequest({ url: '/api/**', method: 'GET' }, (ctx) => {
+ *             console.log('API GET request:', ctx.request?.url);
+ *             return true;
+ *           }),
+ *         ],
+ *         // Or use unscoped hook
  *         afterResponse: (ctx) => {
  *           console.log('Response:', ctx.response?.status);
  *         },

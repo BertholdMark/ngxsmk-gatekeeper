@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ngxsmk-gatekeeper-ng-add",
+  "title": "ngxsmk-gatekeeper ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "default": false,
+      "description": "Skip npm package installation"
+    },
+    "setupGuard": {
+      "type": "boolean",
+      "default": true,
+      "description": "Set up route guard configuration"
+    },
+    "setupInterceptor": {
+      "type": "boolean",
+      "default": true,
+      "description": "Set up HTTP interceptor configuration"
+    },
+    "createExample": {
+      "type": "boolean",
+      "default": true,
+      "description": "Create example middleware and route configuration"
+    }
+  },
+  "required": []
+}
+

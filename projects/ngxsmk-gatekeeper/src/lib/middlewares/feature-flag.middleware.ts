@@ -97,7 +97,7 @@ export function createFeatureFlagMiddleware(
   return createMiddleware('feature-flag', async (context: MiddlewareContext) => {
     // Priority 1: Provider from options
     // Priority 2: Provider from context (injected by guard/interceptor)
-    const activeProvider = provider || (context.featureFlagProvider as FeatureFlagProvider | undefined);
+    const activeProvider = provider || (context['featureFlagProvider'] as FeatureFlagProvider | undefined);
     
     if (activeProvider) {
       // Use provider to check flag asynchronously

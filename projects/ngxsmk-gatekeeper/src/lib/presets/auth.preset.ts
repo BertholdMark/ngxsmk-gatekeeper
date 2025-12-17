@@ -56,7 +56,7 @@ export function authPreset(
         if (typeof result === 'object' && result !== null && 'allow' in result && !result.allow) {
           return { allow: false, redirect: (result as MiddlewareResponse).redirect || redirect } as MiddlewareResponse;
         }
-        return result;
+        return result as boolean | MiddlewareResponse;
       })
     : authMiddleware;
 

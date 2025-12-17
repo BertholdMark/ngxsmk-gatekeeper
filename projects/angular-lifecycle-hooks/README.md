@@ -76,10 +76,67 @@ Configures lifecycle hooks for the application.
 - `routeBlocked(ctx)` - Called when navigation is blocked.
 
 **HTTP Hooks:**
-- `beforeRequest(ctx)` - Called before HTTP request. Return `false` to block.
-- `afterResponse(ctx)` - Called after successful response.
+- `beforeRequest(ctx)` - Called before HTTP request. Return `false` to block, or `retry()` to retry.
+- `afterResponse(ctx)` - Called after successful response. Return `fallback()` to trigger fallback logic.
 - `requestBlocked(ctx)` - Called when request is blocked.
 - `requestFailed(ctx)` - Called when request fails (network error, etc.).
+
+### Hook Scoping
+
+Hooks can be scoped to specific routes, route patterns, HTTP methods, or API URLs. Use the helper functions to create scoped hooks:
+
+```typescript
+import { beforeRoute, beforeRequest } from 'angular-lifecycle-hooks';
+
+provideLifecycleHooks({
+  route: {
+    // Scoped to admin routes only
+    beforeRoute: [
+      beforeRoute({ path: '/admin/**' }, (ctx) => {
+        console.log('Admin route:', ctx.navigation.to);
+        return true;
+      }),
+      // Multiple scoped hooks can be combined
+      beforeRoute({ path: '/api/**' }, (ctx) => {
+        console.log('API route:', ctx.navigation.to);
+        return true;
+      }),
+    ],
+    // Unscoped hook applies to all routes
+    afterRoute: (ctx) => {
+      console.log('Navigated to:', ctx.navigation.to);
+    },
+  },
+  http: {
+    // Scoped to POST requests only
+    beforeRequest: [
+      beforeRequest({ method: 'POST' }, (ctx) => {
+        console.log('POST request:', ctx.request?.url);
+        return true;
+      }),
+      // Scoped to specific API URL pattern and method
+      beforeRequest({ url: '/api/**', method: 'GET' }, (ctx) => {
+        console.log('API GET request:', ctx.request?.url);
+        return true;
+      }),
+    ],
+  },
+});
+```
+
+**Scope Options:**
+
+- **Route Scopes:**
+  - `path` - Route path or pattern (supports glob patterns like `/admin/**`, `/api/*/users`)
+  
+- **HTTP Scopes:**
+  - `url` - API URL or URL pattern (supports glob patterns like `/api/**`)
+  - `method` - HTTP method(s) (e.g., `'POST'`, `['GET', 'POST']`)
+
+**Pattern Matching:**
+- `**` - Matches any number of path segments (e.g., `/admin/**` matches `/admin/users` and `/admin/users/123`)
+- `*` - Matches any characters except `/` (e.g., `/api/*/users` matches `/api/v1/users` but not `/api/v1/v2/users`)
+- `?` - Matches a single character except `/`
 
 ### Context Objects
 
@@ -128,16 +185,20 @@ Configures lifecycle hooks for the application.
 ### Authentication Check
 
 ```typescript
+import { beforeRoute } from 'angular-lifecycle-hooks';
+
 provideLifecycleHooks({
   route: {
-    beforeRoute: async (ctx) => {
-      const isAuthenticated = await checkAuth();
-      if (!isAuthenticated && ctx.navigation.to !== '/login') {
-        // Redirect to login (you'll need to inject Router for this)
-        return false;
-      }
-      return true;
-    },
+    // Only protect admin routes
+    beforeRoute: [
+      beforeRoute({ path: '/admin/**' }, async (ctx) => {
+        const isAuthenticated = await checkAuth();
+        if (!isAuthenticated) {
+          return false; // Block navigation
+        }
+        return true;
+      }),
+    ],
   },
 })
 ```
@@ -145,15 +206,23 @@ provideLifecycleHooks({
 ### Request Logging
 
 ```typescript
+import { beforeRequest, afterResponse, requestFailed } from 'angular-lifecycle-hooks';
+
 provideLifecycleHooks({
   http: {
-    beforeRequest: (ctx) => {
-      console.log(`[${new Date(ctx.timestamp).toISOString()}] ${ctx.request?.method} ${ctx.request?.url}`);
-      return true;
-    },
-    afterResponse: (ctx) => {
-      console.log(`[${new Date(ctx.timestamp).toISOString()}] ${ctx.response?.status} ${ctx.request?.url}`);
-    },
+    // Log only POST requests
+    beforeRequest: [
+      beforeRequest({ method: 'POST' }, (ctx) => {
+        console.log(`[${new Date(ctx.timestamp).toISOString()}] ${ctx.request?.method} ${ctx.request?.url}`);
+        return true;
+      }),
+    ],
+    // Log all API responses
+    afterResponse: [
+      afterResponse({ url: '/api/**' }, (ctx) => {
+        console.log(`[${new Date(ctx.timestamp).toISOString()}] ${ctx.response?.status} ${ctx.request?.url}`);
+      }),
+    ],
     requestFailed: (ctx) => {
       console.error(`[${new Date(ctx.timestamp).toISOString()}] Request failed:`, ctx.error);
     },
@@ -185,6 +254,73 @@ provideLifecycleHooks({
 })
 ```
 
+## Retry and Fallback Support
+
+### Retry Support
+
+`beforeRequest` hooks can trigger retries by returning a retry signal:
+
+```typescript
+import { provideLifecycleHooks, retry } from 'angular-lifecycle-hooks';
+
+provideLifecycleHooks({
+  http: {
+    beforeRequest: (ctx) => {
+      // Check if token needs refresh
+      if (needsTokenRefresh(ctx)) {
+        // Trigger retry after token refresh
+        return retry({ 
+          delay: 1000, 
+          reason: 'Token refresh needed' 
+        });
+      }
+      return true; // Allow request
+    },
+  },
+  // Configure retry behavior
+  retry: {
+    maxRetries: 3,
+    defaultDelay: 500,
+    exponentialBackoff: true,
+    maxDelay: 10000,
+  },
+});
+```
+
+**Retry Configuration:**
+- `maxRetries` - Maximum number of retries (default: 3)
+- `defaultDelay` - Default delay in milliseconds (default: 0)
+- `exponentialBackoff` - Use exponential backoff (default: false)
+- `maxDelay` - Maximum delay when using exponential backoff (default: 10000ms)
+
+### Fallback Support
+
+`afterResponse` hooks can trigger fallback logic by returning a fallback signal:
+
+```typescript
+import { provideLifecycleHooks, fallback } from 'angular-lifecycle-hooks';
+
+provideLifecycleHooks({
+  http: {
+    afterResponse: (ctx) => {
+      // Check if service is unavailable
+      if (ctx.response?.status === 503) {
+        // Trigger fallback with cached data
+        return fallback({ 
+          data: getCachedData(),
+          reason: 'Service unavailable, using cache' 
+        });
+      }
+    },
+  },
+});
+```
+
+**Fallback Usage:**
+- Fallback signals are returned from `afterResponse` hooks
+- The fallback data is available in `hookResult.fallback.data`
+- Applications can handle fallback logic based on the signal
+
 ## Limitations
 
 1. **Router Hooks**: Router hooks cannot programmatically redirect. Use Angular guards for redirects.
@@ -192,6 +328,7 @@ provideLifecycleHooks({
 3. **Order**: Hooks execute in deterministic order but cannot be reordered.
 4. **Error Handling**: Hook errors are logged but don't affect application flow (except blocking hooks).
 5. **Performance**: Hooks add minimal overhead but should be kept lightweight.
+6. **Retry Limits**: Retries are capped at the configured `maxRetries` value to prevent infinite loops.
 
 ## Requirements
 

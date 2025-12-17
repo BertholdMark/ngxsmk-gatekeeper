@@ -111,5 +111,8 @@ export class LoginComponent {
 
 - [Middleware Pattern](/guide/middleware-pattern) - Learn how middleware works
 - [Route Protection](/guide/route-protection) - Advanced route protection patterns
+- [Security Guide](/guide/security) - Explore 8 security middleware features
+- [Access Control](/guide/access-control) - Time windows and geo-blocking
 - [Examples](/examples/) - See complete working examples
+- [API Reference](/api/middleware) - All 30+ middleware functions
 

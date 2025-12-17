@@ -1,100 +1,185 @@
-# Performance
+# Performance Optimization
 
-Monitor and optimize middleware performance with built-in benchmarking.
+Optimize your application's performance with caching and batching.
 
-## Enabling Benchmarking
+## Caching
 
-Enable benchmark mode in your configuration:
+Cache middleware results to reduce computation:
 
 ```typescript
-provideGatekeeper({
-  middlewares: [authMiddleware],
-  onFail: '/login',
-  benchmark: {
-    enabled: true,
-    middlewareThreshold: 100, // Warn if middleware > 100ms
-    chainThreshold: 500,      // Warn if chain > 500ms
-    sampleSize: 50,          // Number of executions to track
+import { createCacheMiddleware } from 'ngxsmk-gatekeeper';
+
+const cacheMiddleware = createCacheMiddleware({
+  ttl: 3600, // 1 hour in seconds
+  keyGenerator: (context) => {
+    const request = context['request'];
+    if (request) {
+      return `${request.method}:${request.url}`;
+    }
+    return context['path'] || 'unknown';
   },
+  cacheOnlySuccess: true, // Only cache successful results
+  storage: new MemoryCacheStorage() // Or custom storage
 });
 ```
 
-## Benchmark Features
-
-- Automatic warnings when thresholds are exceeded
-- Optimization suggestions
-- Performance statistics
-- Identify slow middlewares
-
-## Threshold Configuration
-
-### `middlewareThreshold`
-
-Warn when individual middleware exceeds this time (in milliseconds):
+### Custom Cache Storage
 
 ```typescript
-benchmark: {
-  enabled: true,
-  middlewareThreshold: 100, // Warn if any middleware > 100ms
+import { CacheStorage } from 'ngxsmk-gatekeeper';
+
+class RedisCacheStorage implements CacheStorage {
+  async get(key: string) {
+    return await redis.get(key);
+  }
+  
+  async set(key: string, value: unknown, ttl?: number) {
+    await redis.setex(key, ttl || 3600, JSON.stringify(value));
+  }
+  
+  async delete(key: string) {
+    await redis.del(key);
+  }
 }
+
+const redisCache = createCacheMiddleware({
+  ttl: 3600,
+  storage: new RedisCacheStorage()
+});
 ```
 
-### `chainThreshold`
+## Request Batching
 
-Warn when entire chain exceeds this time (in milliseconds):
+Batch multiple requests together:
 
 ```typescript
-benchmark: {
-  enabled: true,
-  chainThreshold: 500, // Warn if chain > 500ms
-}
-```
+import { createRequestBatchingMiddleware } from 'ngxsmk-gatekeeper';
 
-### `sampleSize`
-
-Number of executions to track for statistics:
-
-```typescript
-benchmark: {
-  enabled: true,
-  sampleSize: 50, // Track last 50 executions
-}
-```
-
-## Performance Warnings
-
-When thresholds are exceeded, you'll see warnings like:
-
-```
-⚠ [Gatekeeper] Middleware "slowMiddleware" exceeded threshold: 150ms (threshold: 100ms)
-⚠ [Gatekeeper] Chain exceeded threshold: 600ms (threshold: 500ms)
-```
-
-## Optimization Tips
-
-1. **Async Operations**: Use async middleware for I/O operations
-2. **Caching**: Cache expensive checks
-3. **Early Returns**: Return false early when possible
-4. **Pipeline Order**: Put fast checks first
-
-## Example
-
-```typescript
-provideGatekeeper({
-  middlewares: [
-    fastCheckMiddleware,    // Fast check first
-    slowAsyncMiddleware,     // Slow check last
-  ],
-  benchmark: {
-    enabled: true,
-    middlewareThreshold: 50,
-    chainThreshold: 200,
+const batchingMiddleware = createRequestBatchingMiddleware({
+  batchWindow: 100, // 100ms window
+  maxBatchSize: 10,
+  canCombine: (req1, req2) => {
+    // Determine if requests can be combined
+    return req1['path'] === req2['path'];
   },
+  combineRequests: (requests) => {
+    // Combine multiple requests into one
+    return requests[0]!; // Use first request
+  },
+  splitResult: (combinedResult, requests) => {
+    // Split combined result back to individual results
+    return requests.map(() => combinedResult);
+  }
+});
+```
+
+### API Request Batching
+
+```typescript
+const apiBatching = createRequestBatchingMiddleware({
+  batchWindow: 50, // 50ms
+  maxBatchSize: 20,
+  canCombine: (req1, req2) => {
+    const r1 = req1['request'];
+    const r2 = req2['request'];
+    return r1?.url === r2?.url && r1?.method === r2?.method;
+  },
+  combineRequests: (requests) => {
+    // Combine into batch request
+    const batchData = requests.map(r => r['request']?.body);
+    return {
+      ...requests[0]!,
+      'batchData': batchData
+    };
+  },
+  splitResult: (result, requests) => {
+    // Split batch response
+    if (typeof result === 'object' && 'batchResults' in result) {
+      return (result as { batchResults: unknown[] }).batchResults;
+    }
+    return requests.map(() => result);
+  }
+});
+```
+
+## Combining Performance Features
+
+```typescript
+import { definePipeline } from 'ngxsmk-gatekeeper';
+
+const performancePipeline = definePipeline('performance', [
+  cacheMiddleware,
+  batchingMiddleware
+]);
+```
+
+## Examples
+
+### Cached API Responses
+
+```typescript
+const cachedAPI = definePipeline('cached-api', [
+  createCacheMiddleware({
+    ttl: 300, // 5 minutes
+    keyGenerator: (ctx) => {
+      const request = ctx['request'];
+      return `${request?.method}:${request?.url}`;
+    }
+  }),
+  apiMiddleware
+]);
+```
+
+### Batched Database Queries
+
+```typescript
+const batchedQueries = createRequestBatchingMiddleware({
+  batchWindow: 100,
+  maxBatchSize: 50,
+  canCombine: (req1, req2) => {
+    // Combine similar queries
+    return req1['queryType'] === req2['queryType'];
+  },
+  combineRequests: (requests) => {
+    // Combine into batch query
+    const queries = requests.map(r => r['query']);
+    return {
+      ...requests[0]!,
+      'batchQueries': queries
+    };
+  }
+});
+```
+
+## Best Practices
+
+1. **Cache wisely** - Don't cache sensitive or frequently changing data
+2. **Set appropriate TTL** - Balance freshness and performance
+3. **Monitor cache hit rates** - Track cache effectiveness
+4. **Batch similar requests** - Only batch requests that can be combined
+5. **Test performance** - Measure before and after optimization
+
+## Performance Metrics
+
+Track performance improvements:
+
+```typescript
+import { createAnalyticsMiddleware } from 'ngxsmk-gatekeeper';
+
+const performanceAnalytics = createAnalyticsMiddleware({
+  sink: {
+    track: async (event) => {
+      if (event.duration) {
+        // Track response times
+        await trackMetric('response_time', event.duration);
+      }
+    }
+  },
+  trackMetrics: true
 });
 ```
 
 ## Next Steps
 
-- [Debug Mode](/guide/debug-mode) - Enable detailed logging
-- [Configuration](/guide/configuration) - Learn about all options
-
+- [Monitoring](/guide/monitoring) - Analytics and logging
+- [Debug Mode](/guide/debug-mode) - Performance debugging

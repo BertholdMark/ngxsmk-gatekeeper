@@ -5,4 +5,6 @@
 
 export * from './hook.types';
 export * from './hook-runner';
+export * from './pattern-matcher';
+export * from './hook-helpers';
 

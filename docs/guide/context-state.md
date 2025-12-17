@@ -58,6 +58,58 @@ context['customProperty'] = 'value';
 context['featureFlags'] = getFeatureFlags();
 ```
 
+### Shared Execution State
+
+The `context.shared` object provides a way for middleware/hooks to share data during a single request or navigation cycle. This state is automatically initialized as an empty object and is scoped to the current execution.
+
+**Key Features:**
+- **Scoped to execution**: State lives only for a single request or navigation cycle
+- **Mutable**: Middleware can read and write values freely
+- **Type-safe**: Use TypeScript for better type safety
+
+```typescript
+// First middleware: Store computed value
+const cacheMiddleware = createMiddleware('cache', (context) => {
+  // Compute expensive value once
+  const cacheKey = generateCacheKey(context.request?.url);
+  context.shared.cacheKey = cacheKey;
+  context.shared.requestStartTime = Date.now();
+  return true;
+});
+
+// Later middleware: Use stored value
+const analyticsMiddleware = createMiddleware('analytics', (context) => {
+  // Read value set by previous middleware
+  const cacheKey = context.shared.cacheKey as string;
+  const startTime = context.shared.requestStartTime as number;
+  const duration = Date.now() - startTime;
+  
+  logAnalytics(cacheKey, duration);
+  return true;
+});
+
+// Middleware can also update shared state
+const enrichmentMiddleware = createMiddleware('enrich', (context) => {
+  // Read existing value
+  const existing = context.shared.userMetadata as Record<string, unknown> | undefined;
+  
+  // Update shared state
+  context.shared.userMetadata = {
+    ...existing,
+    enriched: true,
+    enrichmentTime: Date.now(),
+  };
+  
+  return true;
+});
+```
+
+**Important Notes:**
+- Shared state is **not persisted** between requests or navigations
+- Each new request/navigation gets a fresh `shared` object
+- Use shared state for temporary data that needs to be passed between middleware
+- Avoid storing sensitive data in shared state unless necessary
+
 ## Accessing Context in Middleware
 
 ```typescript
@@ -76,6 +128,10 @@ const middleware = createMiddleware('custom', (context) => {
   
   // Custom properties
   const custom = context['customProperty'];
+  
+  // Shared execution state
+  const sharedData = context.shared;
+  const cacheKey = context.shared.cacheKey;
   
   return true;
 });

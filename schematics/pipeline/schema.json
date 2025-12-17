@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ngxsmk-gatekeeper-pipeline",
+  "title": "ngxsmk-gatekeeper pipeline schematic",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the pipeline",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the pipeline?"
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the pipeline file",
+      "default": "src/app/pipelines"
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "middlewares": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of middleware names to include in the pipeline",
+      "default": ["auth"],
+      "x-prompt": {
+        "message": "Which middlewares would you like to include? (comma-separated)",
+        "type": "input"
+      }
+    }
+  },
+  "required": ["name"]
+}
+

@@ -1,0 +1,29 @@
+{
+  "title": "ngxsmk-gatekeeper Playground",
+  "description": "Interactive playground for ngxsmk-gatekeeper - Angular route and HTTP protection library",
+  "template": "angular-cli",
+  "tags": ["angular", "typescript", "middleware", "route-guard", "authentication"],
+  "dependencies": {
+    "@angular/animations": "^20.3.0",
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/platform-browser-dynamic": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "ngxsmk-gatekeeper": "latest",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "files": {
+    "src/main.ts": "./main.ts",
+    "src/index.html": "./index.html",
+    "src/styles.css": "./styles.css",
+    "angular.json": "./angular.json",
+    "tsconfig.json": "./tsconfig.json",
+    "package.json": "./package.json"
+  }
+}
+

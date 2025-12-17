@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ngxsmk-gatekeeper-middleware",
+  "title": "ngxsmk-gatekeeper middleware schematic",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the middleware",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the middleware?"
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the middleware file",
+      "default": "src/app/middlewares"
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": ["auth", "role", "custom"],
+      "description": "The type of middleware to generate",
+      "default": "custom",
+      "x-prompt": {
+        "message": "What type of middleware would you like to create?",
+        "type": "list",
+        "items": [
+          {
+            "value": "auth",
+            "label": "Authentication middleware"
+          },
+          {
+            "value": "role",
+            "label": "Role-based middleware"
+          },
+          {
+            "value": "custom",
+            "label": "Custom middleware"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}
+

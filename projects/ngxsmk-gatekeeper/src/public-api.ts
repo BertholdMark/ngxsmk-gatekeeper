@@ -213,3 +213,325 @@ export type {
   MiddlewareDiagnostics,
   ExecutionOrderDiagnostics,
 } from './lib/diagnostics';
+
+// Built-in middleware (core)
+export {
+  createAuthMiddleware,
+  createRoleMiddleware,
+  createFeatureFlagMiddleware,
+  createRateLimitMiddleware,
+} from './lib/middlewares';
+export type {
+  AuthMiddlewareOptions,
+  RoleMiddlewareOptions,
+  FeatureFlagMiddlewareOptions,
+  RateLimitMiddlewareOptions,
+} from './lib/middlewares';
+
+// Security middleware
+export {
+  createIPWhitelistMiddleware,
+  createIPBlacklistMiddleware,
+  createCSRFMiddleware,
+  getCSRFToken,
+  createSessionMiddleware,
+  createAPIKeyMiddleware,
+  createAccountLockoutMiddleware,
+  createWebhookSignatureMiddleware,
+  createDeviceFingerprintMiddleware,
+  createUserAgentMiddleware,
+} from './lib/middlewares';
+export type {
+  IPWhitelistMiddlewareOptions,
+  IPBlacklistMiddlewareOptions,
+  CSRFMiddlewareOptions,
+  SessionMiddlewareOptions,
+  APIKeyMiddlewareOptions,
+  AccountLockoutMiddlewareOptions,
+  WebhookSignatureMiddlewareOptions,
+  DeviceFingerprintMiddlewareOptions,
+  UserAgentMiddlewareOptions,
+} from './lib/middlewares';
+
+// Access control middleware
+export {
+  createTimeWindowMiddleware,
+  createMaintenanceModeMiddleware,
+  createGeoBlockMiddleware,
+} from './lib/middlewares';
+export type {
+  TimeWindowMiddlewareOptions,
+  DayOfWeek,
+  MaintenanceModeMiddlewareOptions,
+  GeoBlockMiddlewareOptions,
+} from './lib/middlewares';
+
+// Authentication middleware
+export {
+  createMFAMiddleware,
+  createOAuth2Middleware,
+  createJWTRefreshMiddleware,
+} from './lib/middlewares';
+export type {
+  MFAMiddlewareOptions,
+  MFAMethod,
+  OAuth2MiddlewareOptions,
+  OAuth2Provider,
+  JWTRefreshMiddlewareOptions,
+} from './lib/middlewares';
+
+// Request processing middleware
+export {
+  createRequestValidationMiddleware,
+  createRequestSizeMiddleware,
+  createRequestDeduplicationMiddleware,
+  createAPIVersioningMiddleware,
+} from './lib/middlewares';
+export type {
+  RequestValidationMiddlewareOptions,
+  ValidationSchema,
+  RequestSizeMiddlewareOptions,
+  RequestDeduplicationMiddlewareOptions,
+  APIVersioningMiddlewareOptions,
+} from './lib/middlewares';
+
+// Advanced control middleware
+export {
+  createConditionalMiddleware,
+  createCircuitBreakerMiddleware,
+  createRetryMiddleware,
+  createConcurrentLimitMiddleware,
+} from './lib/middlewares';
+export type {
+  ConditionalMiddlewareOptions,
+  CircuitBreakerMiddlewareOptions,
+  RetryMiddlewareOptions,
+  BackoffStrategy,
+  ConcurrentLimitMiddlewareOptions,
+} from './lib/middlewares';
+
+// Analytics & monitoring middleware
+export {
+  createAnalyticsMiddleware,
+  createABTestMiddleware,
+  createRequestLoggingMiddleware,
+} from './lib/middlewares';
+export type {
+  AnalyticsMiddlewareOptions,
+  AnalyticsEvent,
+  AnalyticsSink,
+  ABTestMiddlewareOptions,
+  ABTest,
+  ABTestVariant,
+  RequestLoggingMiddlewareOptions,
+  LogLevel,
+  LogFormat,
+} from './lib/middlewares';
+
+// Performance middleware
+export {
+  createCacheMiddleware,
+  createRequestBatchingMiddleware,
+} from './lib/middlewares';
+export type {
+  CacheMiddlewareOptions,
+  CacheStorage,
+  RequestBatchingMiddlewareOptions,
+} from './lib/middlewares';
+
+// Marketplace API
+export {
+  MarketplaceRegistry,
+  provideMarketplace,
+  NpmClient,
+  PluginInstaller,
+} from './lib/marketplace';
+export type {
+  MarketplacePlugin,
+  PluginCategory,
+  PluginRating,
+  PluginReview,
+  MarketplaceSearchOptions,
+  MarketplaceSearchResult,
+  MarketplaceConfig,
+  PluginInstallationResult,
+} from './lib/marketplace';
+
+// Configuration Validator
+export {
+  ConfigValidator,
+  validateConfig,
+  typeCheckConfig,
+  analyzePerformance,
+  analyzeSecurity,
+  checkBestPractices,
+} from './lib/validator';
+export type {
+  ValidationResult,
+  ValidationIssue,
+  ValidationSeverity,
+  ValidationCategory,
+  ValidatorOptions,
+  PerformanceAnalysis,
+  SecurityAnalysis,
+} from './lib/validator';
+
+// Template Library
+export {
+  TemplateRegistry,
+  TemplateLoader,
+  createTemplateLoader,
+  loadBuiltInTemplates,
+} from './lib/templates';
+export type {
+  Template,
+  TemplateMetadata,
+  TemplateConfig,
+  TemplateFactory,
+  TemplateCategory,
+} from './lib/templates';
+export {
+  createBasicTemplate,
+  createSaaSTemplate,
+  createECommerceTemplate,
+  createAPITemplate,
+  createSecurityTemplate,
+  createComplianceTemplate,
+} from './lib/templates';
+export type {
+  BasicTemplateOptions,
+  SaaSTemplateOptions,
+  ECommerceTemplateOptions,
+  APITemplateOptions,
+  SecurityTemplateOptions,
+  ComplianceTemplateOptions,
+} from './lib/templates';
+
+// Testing utilities
+export {
+  createMockContext,
+  createAuthenticatedContext,
+  createUnauthenticatedContext,
+  createRoleContext,
+  createHttpContext,
+  createRouteContext,
+  createMockContexts,
+} from './lib/testing';
+export type {
+  MockUser,
+  MockHttpRequest,
+  MockRouteContext,
+  MockContextOptions,
+} from './lib/testing';
+
+export {
+  expectMiddlewareToAllow,
+  expectMiddlewareToDeny,
+  expectMiddlewareToRedirect,
+  expectMiddlewareToCompleteWithin,
+  expectMiddlewareResult,
+  resolveMiddlewareResult,
+  testMiddlewareResult,
+} from './lib/testing';
+export type {
+  MiddlewareTestResult,
+} from './lib/testing';
+
+export {
+  runMiddlewareChain,
+  runMiddlewareChainTests,
+  createMiddlewareTestSuite,
+  expectChainResult,
+} from './lib/testing';
+export type {
+  MiddlewareChainTestOptions,
+  MiddlewareChainTestResult,
+} from './lib/testing';
+
+export {
+  testMiddleware,
+  testMiddlewareWithCases,
+  createMiddlewareTester,
+} from './lib/testing';
+export type {
+  MiddlewareTestCase,
+} from './lib/testing';
+
+// Visual Builder (optional - for visual middleware construction)
+export {
+  VisualBuilderService,
+  createDefaultTemplateRegistry,
+  createDefaultTemplates,
+  generateCode,
+  generateConfigCode,
+  setDragData,
+  getDragData,
+  hasDragData,
+  calculateDropPosition,
+  snapToGrid,
+} from './lib/visual-builder';
+export {
+  TemplateRegistry as VisualBuilderTemplateRegistry,
+} from './lib/visual-builder';
+export type {
+  VisualNode,
+  VisualConnection,
+  VisualBuilderState,
+  NodeType,
+  MiddlewareTemplate,
+  VisualBuilderConfig,
+  VisualBuilderExport,
+  VisualBuilderImportResult,
+  NodeDragData,
+  ConnectionValidationResult,
+  BuilderActionType,
+  BuilderAction,
+  CodeGenerationOptions,
+} from './lib/visual-builder';
+
+// Showcase Gallery (optional - for user implementations and case studies)
+export {
+  ShowcaseService,
+  getDefaultShowcaseEntries,
+} from './lib/showcase';
+export type {
+  ShowcaseEntry,
+  ShowcaseCategory,
+  ImplementationType,
+  CompanyInfo,
+  AuthorInfo,
+  CodeExample,
+  ShowcaseImage,
+  ShowcaseMetrics,
+  ShowcaseFilterOptions,
+  ShowcaseSearchResult,
+  ShowcaseStats,
+} from './lib/showcase';
+
+// Observability (optional - for real-time monitoring and analytics)
+export {
+  ObservabilityService,
+  ObservabilityWebSocketClient,
+  provideObservability,
+  createObservabilityHooks,
+  InMemoryEventCollector,
+} from './lib/observability';
+export type {
+  ObservabilityEventType,
+  ObservabilityEventUnion,
+  MiddlewareExecutionEvent,
+  ChainExecutionEvent,
+  ErrorEvent,
+  MetricEvent,
+  AnalyticsObservabilityEvent,
+  HealthEvent,
+  WebSocketMessageType,
+  WebSocketMessage,
+  SubscribeRequest,
+  AggregatedStats,
+  DashboardConfig,
+  EventCollector,
+  WebSocketClientOptions,
+  WebSocketClientHandlers,
+  ObservabilityIntegrationOptions,
+} from './lib/observability';

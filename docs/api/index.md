@@ -4,6 +4,56 @@ Complete API reference for ngxsmk-gatekeeper.
 
 ## Core APIs
 
+- [Core API](/api/core) - Core types and utilities
+- [Middleware API](/api/middleware) - All middleware functions (30+ built-in)
+- [Guards API](/api/guards) - Route guard functions
+- [Interceptors API](/api/interceptors) - HTTP interceptor functions
+
+## Quick Links
+
+### Security Middleware
+- IP Whitelisting/Blacklisting
+- CSRF Protection
+- Session Management
+- API Key Validation
+- Account Lockout
+- Webhook Signature Verification
+- Device Fingerprinting
+- User-Agent Validation
+
+### Access Control
+- Time-Based Access
+- Maintenance Mode
+- Geographic Restrictions
+
+### Authentication
+- Multi-Factor Authentication (MFA)
+- OAuth2/OIDC
+- JWT Token Refresh
+
+### Request Processing
+- Request Validation
+- Request Size Limits
+- Request Deduplication
+- API Versioning
+
+### Advanced Control
+- Conditional Middleware
+- Circuit Breaker
+- Retry Logic
+- Concurrent Limits
+
+### Analytics & Monitoring
+- Request Analytics
+- A/B Testing
+- Request Logging
+
+### Performance
+- Cache Middleware
+- Request Batching
+
+## Core APIs
+
 ### `provideGatekeeper(config)`
 
 Configures the gatekeeper with middleware and options.

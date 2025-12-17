@@ -97,6 +97,7 @@ function buildContext(
 ): MiddlewareContext {
   const context: MiddlewareContext = {
     route,
+    shared: {}, // Initialize shared execution state for middleware chain
   };
 
   // Add feature flag provider to context if available
