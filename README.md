@@ -346,22 +346,22 @@ provideHttpClient(
 
 ## 📚 Complete Documentation
 
-- **[📖 Full Documentation](https://github.com/NGXSMK/ngxsmk-gatekeeper#readme)** - Complete guide with examples
-- **[🎮 Interactive Playground](./docs/playground/)** - Try it in your browser
-- **[📋 Template Library](./docs/templates/)** - Pre-built configurations
+- **[📖 Full Documentation](https://NGXSMK.github.io/ngxsmk-gatekeeper)** - Complete guide with examples
+- **[🎮 Interactive Playground](https://NGXSMK.github.io/ngxsmk-gatekeeper/playground/)** - Try it in your browser
+- **[📋 Template Library](https://NGXSMK.github.io/ngxsmk-gatekeeper/templates/)** - Pre-built configurations
 - **[🛠️ Angular Schematics](./schematics/README.md)** - Code generators
 - **[⚡ CLI Tool](./tools/cli/README.md)** - Standalone command-line interface
-- **[🧪 Testing Utilities](./docs/testing/)** - Testing helpers and mocks
-- **[✅ Configuration Validator](./docs/validation/)** - Validate your setup
-- **[🛒 Middleware Marketplace](./docs/marketplace/)** - Discover plugins
-- **[📊 Observability Dashboard](./docs/observability/)** - Real-time monitoring
-- **[🎨 Visual Builder](./docs/visual-builder/)** - Drag-and-drop middleware builder
-- **[🌟 Showcase Gallery](./docs/showcase/)** - User implementations
-- **[🚀 Quick Start Guide](./docs/guide/quick-start.md)** - Get started in 5 minutes
-- **[🎯 Middleware Pattern](./docs/guide/middleware-pattern.md)** - Learn the core concept
-- **[🔐 Route Protection](./docs/guide/route-protection.md)** - Protect your routes
-- **[🌐 HTTP Protection](./docs/guide/http-protection.md)** - Protect API calls
-- **[📦 Examples](./docs/examples/)** - Copy-paste ready examples
+- **[🧪 Testing Utilities](https://NGXSMK.github.io/ngxsmk-gatekeeper/testing/)** - Testing helpers and mocks
+- **[✅ Configuration Validator](https://NGXSMK.github.io/ngxsmk-gatekeeper/validation/)** - Validate your setup
+- **[🛒 Middleware Marketplace](https://NGXSMK.github.io/ngxsmk-gatekeeper/marketplace/)** - Discover plugins
+- **[📊 Observability Dashboard](https://NGXSMK.github.io/ngxsmk-gatekeeper/observability/)** - Real-time monitoring
+- **[🎨 Visual Builder](https://NGXSMK.github.io/ngxsmk-gatekeeper/visual-builder/)** - Drag-and-drop middleware builder
+- **[🌟 Showcase Gallery](https://NGXSMK.github.io/ngxsmk-gatekeeper/showcase/)** - User implementations
+- **[🚀 Quick Start Guide](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/quick-start)** - Get started in 5 minutes
+- **[🎯 Middleware Pattern](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/middleware-pattern)** - Learn the core concept
+- **[🔐 Route Protection](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/route-protection)** - Protect your routes
+- **[🌐 HTTP Protection](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/http-protection)** - Protect API calls
+- **[📦 Examples](https://NGXSMK.github.io/ngxsmk-gatekeeper/examples/)** - Copy-paste ready examples
 
 ## 💡 Advanced Features
 
@@ -498,10 +498,10 @@ await expectMiddlewareToAllow(authMiddleware(context));
 
 ### 📖 Documentation
 
-- **[Getting Started](./docs/guide/getting-started.md)** - Introduction and overview
-- **[Installation](./docs/guide/installation.md)** - Setup instructions
-- **[Middleware Pattern](./docs/guide/middleware-pattern.md)** - Core concepts
-- **[API Reference](./docs/api/)** - Complete API documentation
+- **[Getting Started](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/getting-started)** - Introduction and overview
+- **[Installation](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/installation)** - Setup instructions
+- **[Middleware Pattern](https://NGXSMK.github.io/ngxsmk-gatekeeper/guide/middleware-pattern)** - Core concepts
+- **[API Reference](https://NGXSMK.github.io/ngxsmk-gatekeeper/api/)** - Complete API documentation
 
 ### 🎯 Examples
 
@@ -556,7 +556,7 @@ If this library helps you build better Angular applications:
 ## 🔗 Links
 
 - 📦 [npm Package](https://www.npmjs.com/package/ngxsmk-gatekeeper)
-- 📚 [Documentation](https://github.com/NGXSMK/ngxsmk-gatekeeper#readme)
+- 📚 [Documentation](https://NGXSMK.github.io/ngxsmk-gatekeeper)
 - 🐛 [Issue Tracker](https://github.com/NGXSMK/ngxsmk-gatekeeper/issues)
 - 💬 [Discussions](https://github.com/NGXSMK/ngxsmk-gatekeeper/discussions)
 - 🔒 [Security Policy](./SECURITY.md)

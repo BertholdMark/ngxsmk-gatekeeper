@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/NGXSMK/ngxsmk-gatekeeper/issues"
   },
-  "homepage": "https://github.com/NGXSMK/ngxsmk-gatekeeper#readme",
+  "homepage": "https://NGXSMK.github.io/ngxsmk-gatekeeper",
   "main": "./fesm2022/ngxsmk-gatekeeper.mjs",
   "module": "./fesm2022/ngxsmk-gatekeeper.mjs",
   "types": "./index.d.ts",
