@@ -1,6 +1,6 @@
 {
   "name": "ngxsmk-gatekeeper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A framework-agnostic middleware engine for Angular that provides route and HTTP request protection through a composable middleware pattern",
   "keywords": [
     "angular",
