@@ -1,0 +1,27 @@
+{
+  "name": "angular-lifecycle-hooks",
+  "version": "0.1.0",
+  "description": "Global lifecycle hooks for Angular routing and HTTP requests",
+  "keywords": [
+    "angular",
+    "lifecycle",
+    "hooks",
+    "router",
+    "http",
+    "interceptor",
+    "observable"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/angular-lifecycle-hooks.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.0.0 || ^18.0.0",
+    "@angular/core": "^17.0.0 || ^18.0.0",
+    "@angular/router": "^17.0.0 || ^18.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "sideEffects": false
+}
+

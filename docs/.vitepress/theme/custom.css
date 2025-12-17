@@ -1,0 +1,112 @@
+/**
+ * Custom styles for ngxsmk-gatekeeper documentation
+ */
+
+:root {
+  --vp-c-brand: #42b883;
+  --vp-c-brand-light: #66c89a;
+  --vp-c-brand-lighter: #8dd3b8;
+  --vp-c-brand-dark: #35495e;
+  --vp-c-brand-darker: #2c3e50;
+  
+  --vp-c-accent: #dd0031;
+  --vp-c-accent-light: #e6335a;
+  --vp-c-accent-lighter: #ef6683;
+  --vp-c-accent-dark: #c3002f;
+  --vp-c-accent-darker: #a90027;
+}
+
+/* Custom logo styling */
+.VPNavBarTitle .logo {
+  height: 32px;
+  width: 32px;
+}
+
+/* Hero section enhancements */
+.VPHero {
+  gap: 3rem;
+}
+
+.VPHero .image {
+  max-width: 200px;
+  max-height: 200px;
+  margin-left: 2rem;
+}
+
+.VPHero .main {
+  margin-right: 2rem;
+}
+
+/* Code block styling */
+.vp-code-group .tabs {
+  border-radius: 8px 8px 0 0;
+}
+
+/* Custom badge styling */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--vp-c-brand-light);
+  color: var(--vp-c-brand-darker);
+}
+
+.badge.new {
+  background: var(--vp-c-accent-light);
+  color: white;
+}
+
+/* Table styling */
+.vp-doc table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.vp-doc table th {
+  background: var(--vp-c-brand-light);
+  color: var(--vp-c-brand-darker);
+}
+
+/* Custom button styling */
+.vp-button {
+  transition: all 0.2s ease;
+}
+
+.vp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 184, 131, 0.3);
+}
+
+/* Sidebar enhancements */
+.VPSidebar .group {
+  padding: 0.5rem 0;
+}
+
+/* Footer styling */
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .VPHero {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .VPHero .image {
+    max-width: 150px;
+    max-height: 150px;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .VPHero .main {
+    margin-right: 0;
+    text-align: center;
+  }
+}
+

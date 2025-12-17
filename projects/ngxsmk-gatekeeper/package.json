@@ -1,0 +1,46 @@
+{
+  "name": "ngxsmk-gatekeeper",
+  "version": "0.0.1",
+  "description": "A framework-agnostic middleware engine for Angular that provides route and HTTP request protection through a composable middleware pattern",
+  "keywords": [
+    "angular",
+    "middleware",
+    "route-guard",
+    "http-interceptor",
+    "authentication",
+    "authorization",
+    "gatekeeper",
+    "route-protection",
+    "angular-library",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ngxsmk-gatekeeper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/ngxsmk-gatekeeper/issues"
+  },
+  "homepage": "https://github.com/your-username/ngxsmk-gatekeeper#readme",
+  "main": "./fesm2022/ngxsmk-gatekeeper.mjs",
+  "module": "./fesm2022/ngxsmk-gatekeeper.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    "./lib/middlewares": {
+      "esm2022": "./lib/middlewares/index.mjs",
+      "esm": "./lib/middlewares/index.mjs"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0",
+    "@angular/core": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0",
+    "@angular/router": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0",
+    "rxjs": "^7.2.0 || ^8.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,28 @@
+# Source files
+src/
+tsconfig.json
+tsconfig.lib.json
+tsconfig.lib.prod.json
+tsconfig.spec.json
+
+# Build configuration
+ng-package.json
+angular.json
+
+# Test files
+**/*.spec.ts
+karma.conf.js
+
+# Development files
+**/.gitkeep
+**/.DS_Store
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Documentation (keep README.md)
+examples/
+
