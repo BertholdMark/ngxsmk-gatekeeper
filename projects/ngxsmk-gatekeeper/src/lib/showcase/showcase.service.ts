@@ -302,8 +302,6 @@ export class ShowcaseService {
    * Load entries
    */
   private loadEntries(): void {
-    // In a real implementation, you would load from an API or file
-    // For now, we use the default entries
     this.entries = getDefaultShowcaseEntries();
     this.entriesSubject.next([...this.entries]);
   }

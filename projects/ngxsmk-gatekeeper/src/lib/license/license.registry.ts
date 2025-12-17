@@ -111,7 +111,6 @@ export class LicenseRegistry {
     licenseKey: string,
     context?: LicenseVerificationContext
   ): Promise<LicenseVerificationResult> {
-    // Clear cache for this key
     this.cache.delete(licenseKey);
 
     // Try each verifier's refresh method

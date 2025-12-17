@@ -66,10 +66,7 @@ function getClientIP(context: MiddlewareContext): string | null {
     return contextIP;
   }
   
-  // Browser environment - try to get from window (if available)
   if (typeof window !== 'undefined') {
-    // In browser, IP is typically not available directly
-    // This would need to be set by the application
     return null;
   }
   
@@ -210,7 +207,6 @@ export function createIPBlacklistMiddleware(
     const clientIP = getClientIP(context);
     
     if (!clientIP) {
-      // If IP cannot be determined, allow (whitelist should handle this)
       return true;
     }
 

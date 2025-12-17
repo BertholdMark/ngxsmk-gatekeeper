@@ -11,7 +11,6 @@
 
 import { Template, TemplateCategory } from '../template.types';
 import { GatekeeperConfig } from '../../angular/gatekeeper.config';
-// definePipeline not used in this template
 import {
   createAuthMiddleware,
   createCSRFMiddleware,

@@ -66,7 +66,6 @@ export function securityHeadersMiddleware(
           resolvedHeaders[key] = value();
         } catch (error) {
           console.warn(`[Security Headers] Failed to resolve header "${key}":`, error);
-          // Skip this header if resolution fails
         }
       } else {
         resolvedHeaders[key] = value;
@@ -97,7 +96,6 @@ export function securityHeadersMiddleware(
       } as SecurityHeadersEntry;
     }
 
-    // Always allow - this middleware only adds headers
     return true;
   });
 }

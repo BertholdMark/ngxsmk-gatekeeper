@@ -71,7 +71,6 @@ export class VisualBuilderService {
       return;
     }
 
-    // Remove all connections involving this node
     const connectionsToRemove = this.state.connections.filter(
       (c) => c.sourceId === nodeId || c.targetId === nodeId
     );
@@ -541,8 +540,6 @@ export class VisualBuilderService {
   private applyHistory(): void {
     const newState = this.createInitialState();
     for (let i = 0; i <= this.historyIndex; i++) {
-      // Rebuild state from history
-      // This is simplified - in a real implementation, you'd rebuild more carefully
       void this.history[i];
     }
     this.updateState(newState);

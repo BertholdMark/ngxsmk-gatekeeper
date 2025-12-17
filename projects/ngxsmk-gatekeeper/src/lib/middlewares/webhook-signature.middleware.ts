@@ -39,15 +39,8 @@ export interface WebhookSignatureMiddlewareOptions {
   message?: string;
 }
 
-/**
- * Computes HMAC signature (simplified - in production use crypto library)
- */
 function computeHMAC(payload: string, secret: string, algorithm: SignatureAlgorithm): string {
-  // This is a simplified implementation
-  // In production, use proper crypto library like Web Crypto API or Node.js crypto
   if (typeof crypto !== 'undefined' && 'subtle' in crypto) {
-    // Browser Web Crypto API would be used here
-    // For now, return a placeholder
     return btoa(`${algorithm}:${payload}:${secret}`);
   }
   

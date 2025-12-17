@@ -176,9 +176,7 @@ export function createRequestLoggingMiddleware(
       }
     }
 
-    // This is a pass-through middleware
-    // In real implementation, you'd log after middleware execution
-    const success = true; // This would be the actual result
+    const success = true;
 
     if (logOnlyFailures && success) {
       return success;

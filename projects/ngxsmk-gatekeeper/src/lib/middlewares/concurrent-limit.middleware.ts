@@ -143,8 +143,6 @@ export function createConcurrentLimitMiddleware(
     // Check if limit is reached
     if (requests.length >= maxConcurrent) {
       if (queueStrategy === 'fifo' && requests.length < maxConcurrent + maxQueueSize) {
-        // Queue the request (simplified - in production, use proper queue)
-        // For now, we'll reject but log that it could be queued
         if (redirect) {
           return {
             allow: false,
@@ -173,8 +171,6 @@ export function createConcurrentLimitMiddleware(
     });
     await setRequests(key, requests);
 
-    // Remove request when done (this is a simplified version)
-    // In production, you'd want to track request completion properly
     setTimeout(async () => {
       const currentRequests = await getRequests(key);
       const filtered = currentRequests.filter(req => req.id !== requestId);

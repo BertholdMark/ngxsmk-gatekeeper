@@ -147,7 +147,6 @@ export function createABTestMiddleware(
           await setStoredVariant(storageKey, variant);
         }
       } else {
-        // Assign variant for this request only
         variant = selectVariant(testConfig.variants);
       }
 

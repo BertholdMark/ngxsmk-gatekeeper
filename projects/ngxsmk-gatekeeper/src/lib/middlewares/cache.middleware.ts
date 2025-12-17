@@ -95,8 +95,6 @@ export function createCacheMiddleware(
       return cached as boolean | { allow: boolean; redirect?: string; reason?: string };
     }
 
-    // Cache miss - this middleware is pass-through
-    // In real implementation, you'd wrap the actual middleware execution
     const result = true; // This would be the actual middleware result
 
     // Cache successful results

@@ -10,7 +10,6 @@ import {
   ComplianceExecutionTrace,
   ComplianceDecisionRationale,
 } from './compliance.types';
-// MiddlewareContext type is available but not directly used in this file
 import { MiddlewareResult } from '../core';
 import { NgxMiddleware } from '../core';
 

@@ -110,12 +110,8 @@ export function createAnalyticsMiddleware(
   } = options;
 
   return createMiddleware('analytics', async (context: MiddlewareContext) => {
-    // Analytics should run last (low priority) to not block requests
     const startTime = Date.now();
-
-    // Execute next middleware (this is a pass-through)
-    // In a real implementation, you'd wrap the actual middleware execution
-    const result = true; // This would be the result of the middleware chain
+    const result = true;
 
     if (!trackMetrics || !sink) {
       return result;
@@ -124,7 +120,6 @@ export function createAnalyticsMiddleware(
     const duration = Date.now() - startTime;
     const success = result === true;
 
-    // Skip tracking if only failures and this is a success
     if (trackOnlyFailures && success) {
       return result;
     }

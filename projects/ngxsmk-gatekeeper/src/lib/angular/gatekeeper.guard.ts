@@ -334,8 +334,6 @@ export function gatekeeperGuard(
   try {
     config = inject<GatekeeperConfig>(GATEKEEPER_CONFIG);
   } catch (error) {
-    // Provider missing - this will be caught by tamper detection if enabled
-    // For now, throw to prevent silent failures
     throw new Error('Gatekeeper provider (GATEKEEPER_CONFIG) is missing. Make sure to call provideGatekeeper() in your application providers.');
   }
   

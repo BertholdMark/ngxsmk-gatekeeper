@@ -46,8 +46,6 @@ export function createCompliantMiddleware(
       // Handle synchronous results
       return ensureExplicitDecision(result, defaultReason || `Middleware "${name}" decision`);
     } catch (error) {
-      // Explicit deny on error
-      // Explicit deny on error - no redirect
       return false;
     }
   });

@@ -37,7 +37,6 @@ import { MiddlewareContext } from '../core';
  */
 export function publicMiddleware() {
   return createMiddleware('public', (_context: MiddlewareContext) => {
-    // Always allow - this is an explicit public access marker
     return true;
   });
 }

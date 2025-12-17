@@ -117,8 +117,6 @@ function generateMiddlewareCode(node: VisualNode): string {
     return `// Pipeline: ${node.label}\n${generatePipelineCode(pipelineName, node.pipeline.middlewares.map(() => '/* middleware */'), '  ')}`;
   }
 
-  // For middleware nodes, generate placeholder
-  // In a real implementation, you would serialize the middleware
   const configStr = node.config ? JSON.stringify(node.config, null, 2) : '{}';
   return `// ${node.label}\n// Config: ${configStr}`;
 }

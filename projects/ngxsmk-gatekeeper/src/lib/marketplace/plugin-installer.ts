@@ -37,8 +37,6 @@ export class PluginInstaller {
    */
   async isInstalled(packageName: string): Promise<boolean> {
     try {
-      // In a real implementation, this would check node_modules or package.json
-      // For now, we'll just check if we can require the package
       if (typeof require !== 'undefined') {
         try {
           require.resolve(packageName);

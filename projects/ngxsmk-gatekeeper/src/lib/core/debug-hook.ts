@@ -268,8 +268,6 @@ function isDevelopment(): boolean {
   if (typeof process !== 'undefined' && process.env) {
     return process.env['NODE_ENV'] !== 'production';
   }
-  // In browser, assume development if not minified
-  // This is a best-effort check
   return true;
 }
 
@@ -373,8 +371,6 @@ export function recordChainExecution(
     return;
   }
 
-  // Get recent middleware executions for this chain (last N executions)
-  // Since middleware executions are recorded individually, we'll get the latest ones
   const recentExecutions = store.getMiddlewareExecutions().slice(-middlewareExecutions.length || -10);
 
   const chain: ChainExecutionRecord = {

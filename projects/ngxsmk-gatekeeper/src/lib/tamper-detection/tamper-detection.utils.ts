@@ -79,9 +79,6 @@ function checkDisabledInterceptors(config: TamperDetectionConfig): TamperIssue |
     return null;
   }
 
-  // This is a placeholder check - in practice, detecting disabled interceptors
-  // from within the interceptor is difficult. We can check if the interceptor
-  // is being called, but if it's not called, we won't be able to detect it.
   
   // A more sophisticated approach would involve:
   // 1. Setting a flag when the interceptor is registered
@@ -115,8 +112,6 @@ function checkExecutionOrder(
     const recent = tracker.getRecentExecutions(expectedOrder.length);
     const recentTypes = recent.map(e => e.type);
     
-    // Simple check: ensure guards execute before interceptors for the same path
-    // This is a basic heuristic - more sophisticated checks can be added
     const hasGuard = recentTypes.includes('guard');
     const hasInterceptor = recentTypes.includes('interceptor');
     

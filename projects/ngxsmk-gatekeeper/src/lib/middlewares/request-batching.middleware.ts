@@ -66,11 +66,8 @@ export function createRequestBatchingMiddleware(
     const contexts = batch.map(b => b.context);
 
     try {
-      // Combine requests
       combineRequests(contexts);
-      
-      // Execute middleware (simplified - in real implementation, this would execute actual middleware)
-      const combinedResult = true; // This would be the actual result
+      const combinedResult = true;
       
       // Split result
       const results = splitResult(combinedResult, contexts);

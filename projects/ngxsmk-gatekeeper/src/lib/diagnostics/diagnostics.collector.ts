@@ -55,8 +55,6 @@ function collectApplicationInfo(): DiagnosticsInfo['application'] {
  */
 function collectAngularInfo(): DiagnosticsInfo['angular'] {
   try {
-    // Try to get Angular version from @angular/core
-    // This is a best-effort approach since we can't directly import it
     const angularVersion = getAngularVersion();
     
     if (angularVersion) {
@@ -99,8 +97,6 @@ function getAngularVersion(): string | null {
       }
     }
 
-    // Try to detect from user agent or other sources
-    // This is a fallback and may not be accurate
     return null;
   } catch {
     return null;

@@ -58,8 +58,6 @@ function getCurrentTime(timezone: string): { hour: number; day: number } {
     hour = now.getUTCHours();
     day = now.getUTCDay();
   } else {
-    // For other timezones, we'd need a proper timezone library
-    // This is a simplified version
     const formatter = new Intl.DateTimeFormat('en-US', {
       timeZone: timezone,
       hour: 'numeric',

@@ -89,9 +89,6 @@ export const gatekeeperInterceptor: HttpInterceptorFn = (
   try {
     config = inject<GatekeeperConfig>(GATEKEEPER_CONFIG);
   } catch (error) {
-    // Provider missing - this will be caught by tamper detection if enabled
-    // For now, allow request to proceed (interceptor should not block if provider is missing)
-    // This allows the application to continue functioning even if provider is misconfigured
     console.error('[Gatekeeper] Provider missing - interceptor cannot function properly');
     return next(request);
   }

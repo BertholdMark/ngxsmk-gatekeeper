@@ -78,8 +78,6 @@ export class ComplianceAuditSink implements AuditSink {
    * Logs structured compliance data
    */
   private async logStructured(formatted: string): Promise<void> {
-    // In a real implementation, this would write to a compliance log store
-    // For now, we'll use console for structured output
     if (this.config.logFormat === 'json' || this.config.logFormat === 'jsonl') {
       // Parse and log as structured object for better parsing
       try {

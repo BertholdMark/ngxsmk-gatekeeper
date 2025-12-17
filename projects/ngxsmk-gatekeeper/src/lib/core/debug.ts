@@ -38,8 +38,6 @@ function isProduction(): boolean {
   if (typeof process !== 'undefined' && process.env) {
     return process.env['NODE_ENV'] === 'production';
   }
-  // In browser, check for minified code indicators
-  // This is a best-effort check
   return false;
 }
 
@@ -116,7 +114,6 @@ export function logMiddlewareEnd(
     return;
   }
 
-  // Name is computed but not stored - this is intentional for logging
   void getMiddlewareName(middleware, index);
   // Use performance.now() if available, fallback to Date.now() for SSR compatibility
   const endTime = typeof performance !== 'undefined' && performance.now

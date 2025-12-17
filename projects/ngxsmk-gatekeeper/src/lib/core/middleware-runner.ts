@@ -85,8 +85,6 @@ export async function runMiddlewareChain(
   benchmarkConfig?: BenchmarkConfig,
   complianceConfig?: ComplianceConfig
 ): Promise<MiddlewareChainResult> {
-  // Sort middleware by priority (high priority first)
-  // This ensures deterministic execution order
   const sortedMiddlewares = sortMiddlewareByPriority(middlewares);
 
   // Initialize benchmark if enabled

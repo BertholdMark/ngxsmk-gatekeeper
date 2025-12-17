@@ -426,7 +426,6 @@ export const myPipeline = definePipeline('myPipeline', [
 ]);
 \`;
       console.log(code);
-      // In a real implementation, you would show this in a code editor or copy to clipboard
     } catch (error) {
       alert('Failed to generate code: ' + (error instanceof Error ? error.message : 'Unknown error'));
     }
@@ -477,14 +476,10 @@ export const myPipeline = definePipeline('myPipeline', [
   }
 
   onNodeMouseDown(event: MouseEvent, node: VisualNode) {
-    // Handle node dragging
-    // In a real implementation, you would implement drag functionality
   }
 
   onConnectionStart(event: MouseEvent, node: VisualNode, type: 'input' | 'output') {
     event.stopPropagation();
-    // Handle connection creation
-    // In a real implementation, you would implement connection drawing
   }
 }
 `;
